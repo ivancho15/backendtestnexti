@@ -1,0 +1,592 @@
+{
+	"info": {
+		"_postman_id": "000a8fc1-2ab1-4f02-92eb-81235f69d497",
+		"name": "EndPointsValidations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2308707"
+	},
+	"item": [
+		{
+			"name": "clientes - listar clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "clientes - listar clientes por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/17",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "clientes - crear cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"nombre\": \"Ivan\",\n    \"apellido\": \"Marcano\",\n    \"email\": \"ijmm15@gmail.com\",\n    \"direccion\": \"Granda Centento\",\n    \"edad\": 40, \n    \"telefono\": \"0963923181\",\n    \"clienteId\": \"1758627564\",\n    \"password\": \"12345\",\n    \"estado\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/37",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"37"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "clientes -  editar clientes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Ivan\",\n    \"apellido\": \"Marcano\",\n    \"email\": \"ijmm15@gmail.com\",\n    \"direccion\": \"Granda Centento\",\n    \"edad\": 40, \n    \"telefono\": \"0963923181\",\n    \"clienteId\": \"1758627564\",\n    \"password\": \"12345\",\n    \"estado\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/37",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"37"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "clientes - eliminar clientes",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/37",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"37"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cuentas - listar cuentas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cuentas - listar cuenta por nro Cuenta (ID)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/496825",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"496825"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cuentas - listar cuentas por cliente (id cliente)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/17/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"17",
+						"cuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cuentas - crear cuenta (por Id Cliente)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nro_cuenta\": 585525,    \n    \"tipo\": \"Ahorros\",\n    \"saldo\": 2500,\n    \"estado\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/19/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"19",
+						"cuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cuentas -  editar cuenta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nro_cuenta\": 585599,    \n    \"tipo\": \"Corriente\",\n    \"saldo\": 2500,\n    \"estado\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/585525",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"585525"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cuentas - eliminar cuenta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/585599",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"585599"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cuentas  - crear cuentas validacion cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nro_cuenta\": 585525,    \n    \"tipo\": \"Ahorros\",\n    \"saldo\": 2500,\n    \"estado\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/31/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"31",
+						"cuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimientos - listar movimientos ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimientos -  listar movimiento por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/movimientos/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"movimientos",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimientos - listar movimientos por Nro Cuenta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/478758/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"478758",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimientos -  crear movimiento validacion Nro de Cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipo\": \"Retiro\",    \n    \"valor\": -540\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/585526/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"585526",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimientos - crear movimiento Retiro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipo\": \"Retiro\",    \n    \"valor\": -540\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"585525",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimientos - crear movimiento Deposito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipo\": \"Deposito\",    \n    \"valor\": 750\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"585525",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimientos - crear movimiento validacion Deposito negativo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipo\": \"Deposito\",    \n    \"valor\": -300\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"585525",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimientos - crear movimiento validacion Retiro positivo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipo\": \"Retiro\",    \n    \"valor\": 500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"585525",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movimientos -  crear movimiento validacion saldo insuficiente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipo\": \"Retiro\",    \n    \"valor\": -2500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cuentas",
+						"585525",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reporte Estado de Cuenta por Fecha por Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/reporte/estadoDeCuentaFechaCliente?dateBefore=2024-05-1&dateAfter=2024-07-8&idCliente=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporte",
+						"estadoDeCuentaFechaCliente"
+					],
+					"query": [
+						{
+							"key": "dateBefore",
+							"value": "2024-05-1"
+						},
+						{
+							"key": "dateAfter",
+							"value": "2024-07-8"
+						},
+						{
+							"key": "idCliente",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

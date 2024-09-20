@@ -4,7 +4,7 @@ USE `db_springboot_backend_technical_test`;
 --
 -- Host: localhost    Database: db_springboot_backend_technical_test
 -- ------------------------------------------------------
--- Server version	8.0.37-0ubuntu0.24.04.1
+-- Server version	8.0.39-0ubuntu0.24.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,7 +40,7 @@ CREATE TABLE `clientes` (
   UNIQUE KEY `username_UNIQUE` (`clienteId`),
   UNIQUE KEY `cliente_emaill_UNIQUE` (`email`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (17,'Jose','Lema','25','098254999','Otavalo sn y principal','jlema1233@gmail.com','2024-05-13','123456789','1234',1),(20,'Juan','Osoroio','31','09685479632','13 junio y Equinoccial','josorio@hotmail.com','2024-05-13','1856479621','1245',1);
+INSERT INTO `clientes` VALUES (17,'Jose','Lema','25','098254999','Otavalo sn y principal','jlema1233@gmail.com','2024-05-13','123456789','1234',1),(20,'Juan','Osoroio','31','09685479632','13 junio y Equinoccial','josorio@hotmail.com','2024-05-13','1856479621','1245',1),(38,'Marianela','Montalvo','26','0998884477','La Pradera','nela_montalvo@gmail.com',NULL,'1778564717','54321',1),(48,'Iván','Marcano','40','0987456612','mi casa por la ciudad','ijmm15@gmail.com','2024-09-20','178547857','12345',1),(58,'Iván','Marcano','40','0987456612','mi casa por la ciudad','ijmm54@gmail.com','2024-09-20','178547859','12345',1);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,4 +121,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-07 17:07:29
+-- Dump completed on 2024-09-20  2:09:12

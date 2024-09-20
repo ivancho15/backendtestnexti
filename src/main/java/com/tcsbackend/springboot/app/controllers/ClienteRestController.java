@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.controllers;
+package com.tcsbackend.springboot.app.controllers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bolsadeideas.springboot.app.models.entity.Cliente;
-import com.bolsadeideas.springboot.app.models.services.IClienteServices;
+import com.tcsbackend.springboot.app.models.entity.Cliente;
+import com.tcsbackend.springboot.app.models.services.IClienteServices;
 
 import jakarta.validation.Valid;
 

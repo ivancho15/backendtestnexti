@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "000a8fc1-2ab1-4f02-92eb-81235f69d497",
 		"name": "EndPointsValidations",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "2308707"
 	},
 	"item": [
@@ -11,18 +11,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/clientes",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"clientes"
-					]
-				}
+				"url": "http://localhost:8080/api/clientes"
 			},
 			"response": []
 		},
@@ -31,19 +20,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/clientes/17",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"clientes",
-						"17"
-					]
-				}
+				"url": "http://localhost:8080/api/clientes/17"
 			},
 			"response": []
 		},
@@ -54,26 +31,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "\n{\n    \"nombre\": \"Ivan\",\n    \"apellido\": \"Marcano\",\n    \"email\": \"ijmm15@gmail.com\",\n    \"direccion\": \"Granda Centento\",\n    \"edad\": 40, \n    \"telefono\": \"0963923181\",\n    \"clienteId\": \"1758627564\",\n    \"password\": \"12345\",\n    \"estado\": true\n}",
+					"raw": "\n{\"nombre\":\"Iván\",\"apellido\":\"Marcano\",\"email\":\"ijmm15@gmail.com\",\"direccion\":\"mi casa por la ciudad\",\"edad\":40,\"telefono\":\"0987456612\",\"clienteId\":\"178547857\",\"password\":\"12345\",\"estado\":true}\n",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/clientes/37",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"clientes",
-						"37"
-					]
-				}
+				"url": "http://localhost:8080/api/clientes"
 			},
 			"response": []
 		},
@@ -84,26 +49,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"Ivan\",\n    \"apellido\": \"Marcano\",\n    \"email\": \"ijmm15@gmail.com\",\n    \"direccion\": \"Granda Centento\",\n    \"edad\": 40, \n    \"telefono\": \"0963923181\",\n    \"clienteId\": \"1758627564\",\n    \"password\": \"12345\",\n    \"estado\": true\n}",
+					"raw": "{\n    \"nombre\": \"Marianela\",\n    \"apellido\": \"Montalvo\",\n    \"email\": \"nela_montalvo@gmail.com\",\n    \"direccion\": \"La Pradera\",\n    \"edad\": 25, \n    \"telefono\": \"0998884477\",\n    \"clienteId\": \"176784123\",\n    \"password\": \"54321\",\n    \"estado\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/clientes/37",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"clientes",
-						"37"
-					]
-				}
+				"url": "http://localhost:8080/api/clientes/38"
 			},
 			"response": []
 		},
@@ -112,19 +65,7 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/clientes/37",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"clientes",
-						"37"
-					]
-				}
+				"url": "http://localhost:8080/api/clientes/47"
 			},
 			"response": []
 		},
@@ -133,18 +74,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas"
 			},
 			"response": []
 		},
@@ -153,19 +83,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/496825",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"496825"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/496825"
 			},
 			"response": []
 		},
@@ -174,20 +92,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/clientes/17/cuentas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"clientes",
-						"17",
-						"cuentas"
-					]
-				}
+				"url": "http://localhost:8080/api/clientes/17/cuentas"
 			},
 			"response": []
 		},
@@ -205,20 +110,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/clientes/19/cuentas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"clientes",
-						"19",
-						"cuentas"
-					]
-				}
+				"url": "http://localhost:8080/api/clientes/19/cuentas"
 			},
 			"response": []
 		},
@@ -236,19 +128,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/585525",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"585525"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/585525"
 			},
 			"response": []
 		},
@@ -257,19 +137,7 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/585599",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"585599"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/585599"
 			},
 			"response": []
 		},
@@ -287,20 +155,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/clientes/31/cuentas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"clientes",
-						"31",
-						"cuentas"
-					]
-				}
+				"url": "http://localhost:8080/api/clientes/31/cuentas"
 			},
 			"response": []
 		},
@@ -309,18 +164,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/movimientos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"movimientos"
-					]
-				}
+				"url": "http://localhost:8080/api/movimientos"
 			},
 			"response": []
 		},
@@ -329,19 +173,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/movimientos/7",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"movimientos",
-						"7"
-					]
-				}
+				"url": "http://localhost:8080/api/movimientos/7"
 			},
 			"response": []
 		},
@@ -350,20 +182,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/478758/movimientos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"478758",
-						"movimientos"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/478758/movimientos"
 			},
 			"response": []
 		},
@@ -381,20 +200,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/585526/movimientos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"585526",
-						"movimientos"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/585526/movimientos"
 			},
 			"response": []
 		},
@@ -412,20 +218,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"585525",
-						"movimientos"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/585525/movimientos"
 			},
 			"response": []
 		},
@@ -443,20 +236,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"585525",
-						"movimientos"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/585525/movimientos"
 			},
 			"response": []
 		},
@@ -474,20 +254,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"585525",
-						"movimientos"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/585525/movimientos"
 			},
 			"response": []
 		},
@@ -505,20 +272,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"585525",
-						"movimientos"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/585525/movimientos"
 			},
 			"response": []
 		},
@@ -536,20 +290,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/cuentas/585525/movimientos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"cuentas",
-						"585525",
-						"movimientos"
-					]
-				}
+				"url": "http://localhost:8080/api/cuentas/585525/movimientos"
 			},
 			"response": []
 		},

@@ -1,50 +1,38 @@
-package com.bolsadeideas.springboot.app.models.services;
+package com.tcsbackend.springboot.app.models.services;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
-import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 
-import com.bolsadeideas.springboot.app.models.dao.IClienteDao;
-import com.bolsadeideas.springboot.app.models.entity.Cliente;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@SpringBootTest
-class IClienteServicesTest {
 
-	@Autowired
-	private IClienteServices clienteService;
-	@MockBean
-	private IClienteDao clienteRepository;
-	
-	@BeforeEach
-	void setUp() throws Exception {
-		Cliente localCliente = new Cliente();
-			localCliente.setApellido("Marcano");
-			localCliente.setNombre("Ivan");
-			localCliente.setDireccion("Mi Casa");
-			localCliente.setEmail("ijmm15@gmail.com");
-			localCliente.setClienteId("1758627564");
-			localCliente.setPassword("jajaja2024");
-			localCliente.setEdad(40);
-			localCliente.setTelefono("0963978451");
-			Mockito.when(clienteRepository.findClienteByclienteId("1758627564")).thenReturn(Optional.of(localCliente));
-	}
+import com.tcsbackend.springboot.app.models.dao.IClienteDao;
+import com.tcsbackend.springboot.app.models.entity.Cliente;
 
-	@Test
-	@DisplayName("Prueba de obtencion de  informacion  de un local enviando un clienteId calido")
-	public void findClienteByIdClienteShouldFound() {
-		String localClienteId = "1758627564";
-		Cliente cliente = clienteService.findByClienteId(localClienteId).get();
-		assertEquals(localClienteId, cliente.getClienteId());
-	}
-	
-	
 
+@ExtendWith(MockitoExtension.class)
+public class IClienteServicesTest {
+
+    @Mock
+    private IClienteDao clienteRepository;
+
+    @InjectMocks
+    private  ClienteSerivcesImpl clienteService;
+
+    @Test
+    public void testCreateCliente() {
+        Cliente cliente = new Cliente();
+        cliente.setNombre("Iván");
+        when(clienteRepository.save(cliente)).thenReturn(cliente);
+
+        Cliente result = clienteService.save(cliente);
+
+        assertEquals("Iván", result.getNombre());
+    }
 }

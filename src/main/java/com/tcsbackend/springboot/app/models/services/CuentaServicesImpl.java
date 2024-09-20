@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.models.services;
+package com.tcsbackend.springboot.app.models.services;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bolsadeideas.springboot.app.models.dao.ICuentaDao;
-import com.bolsadeideas.springboot.app.models.entity.Cuenta;
+import com.tcsbackend.springboot.app.models.dao.ICuentaDao;
+import com.tcsbackend.springboot.app.models.entity.Cuenta;
 
 @Service
 public class CuentaServicesImpl implements ICuentaServices {

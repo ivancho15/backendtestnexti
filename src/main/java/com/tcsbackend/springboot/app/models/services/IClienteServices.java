@@ -1,9 +1,9 @@
-package com.bolsadeideas.springboot.app.models.services;
+package com.tcsbackend.springboot.app.models.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.bolsadeideas.springboot.app.models.entity.Cliente;
+import com.tcsbackend.springboot.app.models.entity.Cliente;
 
 public interface IClienteServices {
 	public List<Cliente> findAll();

@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.controllers;
+package com.tcsbackend.springboot.app.controllers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bolsadeideas.springboot.app.models.entity.Movimiento;
-import com.bolsadeideas.springboot.app.models.reports.ReporteEstadoDeCuenta;
-import com.bolsadeideas.springboot.app.models.services.IReporteServices;
+import com.tcsbackend.springboot.app.models.entity.Movimiento;
+import com.tcsbackend.springboot.app.models.reports.ReporteEstadoDeCuenta;
+import com.tcsbackend.springboot.app.models.services.IReporteServices;
 
 @RestController
 @RequestMapping("/api")

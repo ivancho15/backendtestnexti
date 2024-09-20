@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.models.entity;
+package com.tcsbackend.springboot.app.models.entity;
 
 
 import java.util.List;

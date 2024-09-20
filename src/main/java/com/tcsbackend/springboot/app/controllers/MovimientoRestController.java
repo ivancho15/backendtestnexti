@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.controllers;
+package com.tcsbackend.springboot.app.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bolsadeideas.springboot.app.models.entity.Cuenta;
-import com.bolsadeideas.springboot.app.models.entity.Movimiento;
-import com.bolsadeideas.springboot.app.models.services.ICuentaServices;
-import com.bolsadeideas.springboot.app.models.services.IMovimientoService;
+import com.tcsbackend.springboot.app.exceptions.SaldoInsuficienteException;
+import com.tcsbackend.springboot.app.models.entity.Cuenta;
+import com.tcsbackend.springboot.app.models.entity.Movimiento;
+import com.tcsbackend.springboot.app.models.services.ICuentaServices;
+import com.tcsbackend.springboot.app.models.services.IMovimientoService;
 
 import jakarta.validation.Valid;
 
@@ -120,9 +121,7 @@ public class MovimientoRestController {
 		}
 		
 		if (movimiento.getValor() + cuenta.getSaldo() < 0) {
-			response.put("mensaje", "Error: No tiene saldo suficiente pare efectuar el movimiento en la cuenta nro: "
-					.concat(nroCuenta.toString()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+			throw new SaldoInsuficienteException("Saldo no disponible");
 		}
 		
 		try {

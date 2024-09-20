@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.models.services;
+package com.tcsbackend.springboot.app.models.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bolsadeideas.springboot.app.models.dao.IClienteDao;
-import com.bolsadeideas.springboot.app.models.entity.Cliente;
+import com.tcsbackend.springboot.app.models.dao.IClienteDao;
+import com.tcsbackend.springboot.app.models.entity.Cliente;
 
 @Service
 public class ClienteSerivcesImpl implements IClienteServices{

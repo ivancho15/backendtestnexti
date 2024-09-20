@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.models.dao;
+package com.tcsbackend.springboot.app.models.dao;
 
 import java.util.Date;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.bolsadeideas.springboot.app.models.entity.Movimiento;
+import com.tcsbackend.springboot.app.models.entity.Movimiento;
 
 
 @Repository

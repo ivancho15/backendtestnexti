@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.models.reports;
+package com.tcsbackend.springboot.app.models.reports;
 
 import java.util.Date;
 

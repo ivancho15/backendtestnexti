@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app;
+package com.tcsbackend.springboot.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

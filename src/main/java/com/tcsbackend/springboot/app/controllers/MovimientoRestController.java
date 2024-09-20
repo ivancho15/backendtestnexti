@@ -1,147 +1,101 @@
 package com.tcsbackend.springboot.app.controllers;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.tcsbackend.springboot.app.exceptions.SaldoInsuficienteException;
 import com.tcsbackend.springboot.app.models.entity.Cuenta;
 import com.tcsbackend.springboot.app.models.entity.Movimiento;
 import com.tcsbackend.springboot.app.models.services.ICuentaServices;
 import com.tcsbackend.springboot.app.models.services.IMovimientoService;
-
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
 public class MovimientoRestController {
-		
-	@Autowired
-	private IMovimientoService movimientoService;
-	
-	@Autowired
-	private ICuentaServices cuentaService;
 
-	@GetMapping("/movimientos")
-	public List<Movimiento> index() {
-		return movimientoService.findAll();
-	}
+    @Autowired
+    private IMovimientoService movimientoService;
 
-	@GetMapping("/movimientos/{id}")
-	public ResponseEntity<?> show(@PathVariable Long id) {
+    @Autowired
+    private ICuentaServices cuentaService;
 
-		Movimiento movimiento = null;
-		Map<String, Object> response = new HashMap<>();
+    // Helper method to handle validation errors
+    private ResponseEntity<Map<String, Object>> handleValidationErrors(BindingResult result) {
+        List<String> errors = result.getFieldErrors().stream()
+            .map(err -> "El campo " + err.getField() + " " + err.getDefaultMessage())
+            .collect(Collectors.toList());
+        return new ResponseEntity<>(Map.of("errors", errors), HttpStatus.BAD_REQUEST);
+    }
 
-		try {
-			movimiento = movimientoService.findById(id);
-		} catch (DataAccessException e) {
-			response.put("mensaje", "Error al realizar la consulta en la base de datos");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+    // Helper method to handle database errors
+    private ResponseEntity<Map<String, Object>> handleDatabaseError(DataAccessException e) {
+        return new ResponseEntity<>(Map.of(
+            "mensaje", "Error en la base de datos",
+            "error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage())),
+            HttpStatus.INTERNAL_SERVER_ERROR
+        );
+    }
 
-		if (movimiento == null) {
-			response.put("mensaje", "El movimiento ID: ".concat(id.toString().concat(" no existe en la base de datos")));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<Movimiento>(movimiento, HttpStatus.OK);
-	}
-	
-	@GetMapping("/cuentas/{cuentaId}/movimientos")
-	public ResponseEntity<?> getAllCuentasbyCliente(@PathVariable Long cuentaId){
-		
-		List<Movimiento>movimientos = new ArrayList<Movimiento>();
-		
-		Map<String, Object> response = new HashMap<>();
-		
-		
-		if(cuentaService.findById(cuentaId)==null) {
-			response.put("mensaje", "Error: no se encuentran movimientos, La cuenta Nro: "
-					.concat(cuentaId.toString().concat(" no existe en la base de datos")));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-		}
-		
-		try {
-			movimientos = movimientoService.movimientoByCuenta(cuentaId);
-		} catch(DataAccessException e) {
-			response.put("mensaje", "Error al realizar la consulta en la base de datos");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-		response.put("movimientos", movimientos);
-		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
-		
-	}
+    @GetMapping("/movimientos")
+    public ResponseEntity<List<Movimiento>> getAllMovimientos() {
+        return ResponseEntity.ok(movimientoService.findAll());
+    }
 
-	@PostMapping("/cuentas/{nroCuenta}/movimientos")
-	public ResponseEntity<?> create(@Valid  @RequestBody Movimiento movimiento, BindingResult result, @PathVariable Long nroCuenta) {
-		Movimiento movimientoNew = null;
-		@SuppressWarnings("unused")
-		Cuenta cuentaUpdated = null;
-		Cuenta cuenta = cuentaService.findById(nroCuenta);
-		
-		Map<String, Object> response = new HashMap<>();
-		
-		if(cuenta==null) {
-			response.put("mensaje", "Error: no se pudo crear el movimiento, la cuenta Nro: "
-					.concat(nroCuenta.toString().concat(" no existe en la base de datos")));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-		}
-		
-		if(result.hasErrors()) {
-			List<String> errors = result.getFieldErrors()
-					.stream()
-					.map(err -> "El campo " + err.getField() + "' '" + err.getDefaultMessage())
-					.collect(Collectors.toList());
-			
-			response.put("errors", errors);
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
-		}
-		
-		
-		if (((movimiento.getTipo().compareTo("Retiro")==0) && movimiento.getValor() > 0) || 
-				((movimiento.getTipo().compareTo("Deposito")==0) && movimiento.getValor() < 0)) {
-			response.put("mensaje", "Error: Inconsistencia en la operación, para retiros coloque numero negativo ");
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
-		}
-		
-		if (movimiento.getValor() + cuenta.getSaldo() < 0) {
-			throw new SaldoInsuficienteException("Saldo no disponible");
-		}
-		
-		try {
-			movimiento.setSaldo(cuenta.getSaldo() + movimiento.getValor());
-			movimiento.setCuenta(cuenta);
-			movimientoNew = movimientoService.save(movimiento);
-			cuenta.setSaldo(movimiento.getSaldo());
-			cuentaUpdated = cuentaService.save(cuenta);
-		} catch (DataAccessException e) {
-			response.put("mensaje", "Error al realizar el insert en la base de datos");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-		response.put("mensaje", "El movimiento ha sido  registrado con éxito! en la cuenta Nro ".concat(nroCuenta.toString()).concat(" a nombre del cliente ")
-				.concat(cuenta.getCliente().getNombre().toString().concat(" ").concat(cuenta.getCliente().getApellido())));
-		response.put("movimiento", movimientoNew);
-		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
-	}
+    @GetMapping("/movimientos/{id}")
+    public ResponseEntity<?> getMovimiento(@PathVariable Long id) {
+        try {
+            Movimiento movimiento = movimientoService.findById(id);
+            if (movimiento == null) {
+                return new ResponseEntity<>(Map.of("mensaje", "Movimiento no encontrado"), HttpStatus.NOT_FOUND);
+            }
+            return ResponseEntity.ok(movimiento);
+        } catch (DataAccessException e) {
+            return handleDatabaseError(e);
+        }
+    }
 
+    @GetMapping("/cuentas/{cuentaId}/movimientos")
+    public ResponseEntity<?> getMovimientosByCuenta(@PathVariable Long cuentaId) {
+        try {
+            Cuenta cuenta = cuentaService.findById(cuentaId);
+            if (cuenta == null) {
+                return new ResponseEntity<>(Map.of("mensaje", "Cuenta no encontrada"), HttpStatus.NOT_FOUND);
+            }
+            return ResponseEntity.ok(Map.of("movimientos", movimientoService.movimientoByCuenta(cuentaId)));
+        } catch (DataAccessException e) {
+            return handleDatabaseError(e);
+        }
+    }
 
+    @PostMapping("/cuentas/{nroCuenta}/movimientos")
+    public ResponseEntity<?> createMovimiento(@Valid @RequestBody Movimiento movimiento, BindingResult result,
+                                              @PathVariable Long nroCuenta) {
+        if (result.hasErrors()) {
+            return handleValidationErrors(result);
+        }
 
+        try {
+            Cuenta cuenta = cuentaService.findById(nroCuenta);
+            if (cuenta == null) {
+                return new ResponseEntity<>(Map.of("mensaje", "Cuenta no encontrada"), HttpStatus.NOT_FOUND);
+            }
+            
+            movimientoService.processMovimiento(cuenta, movimiento);
 
+            return new ResponseEntity<>(Map.of(
+                "mensaje", "Movimiento registrado con éxito",
+                "movimiento", movimiento), HttpStatus.CREATED);
+        } catch (SaldoInsuficienteException e) {
+            return new ResponseEntity<>(Map.of("mensaje", e.getMessage()), HttpStatus.BAD_REQUEST);
+        } catch (DataAccessException e) {
+            return handleDatabaseError(e);
+        }
+    }
 }

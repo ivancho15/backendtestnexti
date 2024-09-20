@@ -73,10 +73,7 @@ public class ReporteRestController {
 		}
 		response.put("movimientos", reportes);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
-	
 		
 	}
 	
-	
-
 }

@@ -12,37 +12,36 @@ import com.tcsbackend.springboot.app.models.entity.Cuenta;
 @Service
 public class CuentaServicesImpl implements ICuentaServices {
 
-	@Autowired 
-	private ICuentaDao cuentaDao;
+    @Autowired 
+    private ICuentaDao cuentaDao;
 
-	@Override
-	@Transactional(readOnly= true)
-	public List<Cuenta> findAll() {
-		return (List<Cuenta>)cuentaDao.findAll();
-	}
+    @Override
+    @Transactional(readOnly= true)
+    public List<Cuenta> findAll() {
+        return (List<Cuenta>)cuentaDao.findAll();
+    }
 
-	@Override
-	@Transactional
-	public Cuenta save(Cuenta cuenta) {
-		return  cuentaDao.save(cuenta);
-	}
+    @Override
+    @Transactional
+    public Cuenta save(Cuenta cuenta) {
+        return cuentaDao.save(cuenta);
+    }
 
-	@Override
-	@Transactional(readOnly= true)
-	public Cuenta findById(Long id) {
-		return cuentaDao.findById(id).orElse(null);
-	}
+    @Override
+    @Transactional(readOnly= true)
+    public Cuenta findById(Long id) {
+        return cuentaDao.findById(id).orElse(null);
+    }
 
-	@Override
-	@Transactional
-	public void delete(Long id) {
-		cuentaDao.deleteById(id);
-	}
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        cuentaDao.deleteById(id);
+    }
 
-	@Override
-	@Transactional(readOnly= true)
-	public List<Cuenta> cuentaByClienet(Long clienteID) {
-		return cuentaDao.findByClienteId(clienteID);
-	}
-
+    @Override
+    @Transactional(readOnly= true)
+    public List<Cuenta> cuentaByClienet(Long clienteID) {
+        return cuentaDao.findByClienteId(clienteID);
+    }
 }

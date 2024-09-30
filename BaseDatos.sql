@@ -40,7 +40,7 @@ CREATE TABLE `clientes` (
   UNIQUE KEY `username_UNIQUE` (`clienteId`),
   UNIQUE KEY `cliente_emaill_UNIQUE` (`email`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (17,'Jose','Lema','25','098254999','Otavalo sn y principal','jlema1233@gmail.com','2024-05-13','123456789','1234',1),(20,'Juan','Osoroio','31','09685479632','13 junio y Equinoccial','josorio@hotmail.com','2024-05-13','1856479621','1245',1),(38,'Marianela','Montalvo','26','0998884477','La Pradera','nela_montalvo@gmail.com',NULL,'1778564717','54321',1),(48,'Iván','Marcano','40','0987456612','mi casa por la ciudad','ijmm15@gmail.com','2024-09-20','178547857','12345',1),(58,'Iván','Marcano','40','0987456612','mi casa por la ciudad','ijmm54@gmail.com','2024-09-20','178547859','12345',1);
+INSERT INTO `clientes` VALUES (17,'Jose','Lema','25','098254999','Otavalo sn y principal','jlema1233@gmail.com','2024-05-13','123456789','1234',1),(20,'Juan','Osoroio','31','09685479632','13 junio y Equinoccial','josorio@hotmail.com','2024-05-13','1856479621','1245',1),(38,'Marianela','Montalvo','26','0998884477','La Pradera','nela_montalvo@gmail.com',NULL,'1778564717','54321',1),(48,'Iván','Marcano','40','0987456612','mi casa por la ciudad','ijmm15@gmail.com','2024-09-20','178547857','12345',1);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,7 +78,7 @@ CREATE TABLE `cuentas` (
 
 LOCK TABLES `cuentas` WRITE;
 /*!40000 ALTER TABLE `cuentas` DISABLE KEYS */;
-INSERT INTO `cuentas` VALUES (478758,'ahorro',1925,1,17),(495878,'Ahorros',150,1,20),(585525,'Ahorros',2170,0,20),(585545,'Corriente',1000,1,17);
+INSERT INTO `cuentas` VALUES (478758,'ahorro',1925,1,17),(495878,'Ahorros',150,1,20),(585525,'Ahorros',1960,0,20),(585529,'Ahorros',2500,1,38),(585545,'Corriente',1000,1,17);
 /*!40000 ALTER TABLE `cuentas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,7 +99,7 @@ CREATE TABLE `movimientos` (
   PRIMARY KEY (`id_movimiento`),
   KEY `fk_movimientos_1_idx` (`nro_cuenta`),
   CONSTRAINT `fk_movimientos_1` FOREIGN KEY (`nro_cuenta`) REFERENCES `cuentas` (`nro_cuenta`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +108,7 @@ CREATE TABLE `movimientos` (
 
 LOCK TABLES `movimientos` WRITE;
 /*!40000 ALTER TABLE `movimientos` DISABLE KEYS */;
-INSERT INTO `movimientos` VALUES (7,'Retiro','1925.0','-75.0','2024-05-13 00:00:00',478758),(9,'Deposito','150.0','150.0','2024-05-13 00:00:00',495878),(15,'Retiro','1960.0','-540.0','2024-07-07 00:00:00',585525),(16,'Retiro','1420.0','-540.0','2024-07-07 00:00:00',585525),(17,'Deposito','2170.0','750.0','2024-07-07 00:00:00',585525),(18,'Deposito','5670.0','3500.0','2024-07-07 00:00:00',585525),(19,'Retiro','2170.0','-3500.0','2024-07-07 00:00:00',585525);
+INSERT INTO `movimientos` VALUES (7,'Retiro','1925.0','-75.0','2024-05-13 00:00:00',478758),(9,'Deposito','150.0','150.0','2024-05-13 00:00:00',495878),(15,'Retiro','1960.0','-540.0','2024-07-07 00:00:00',585525),(16,'Retiro','1420.0','-540.0','2024-07-07 00:00:00',585525),(17,'Deposito','2170.0','750.0','2024-07-07 00:00:00',585525),(18,'Deposito','5670.0','3500.0','2024-07-07 00:00:00',585525),(19,'Retiro','2170.0','-3500.0','2024-07-07 00:00:00',585525),(20,'Retiro','1960.0','-540.0','2024-09-20 00:00:00',585529),(21,'Retiro','1630.0','-540.0','2024-09-20 00:00:00',585525),(22,'Retiro','1960.0','-540.0','2024-09-30 00:00:00',585525);
 /*!40000 ALTER TABLE `movimientos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -121,4 +121,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-20  2:09:12
+-- Dump completed on 2024-09-30  0:19:50

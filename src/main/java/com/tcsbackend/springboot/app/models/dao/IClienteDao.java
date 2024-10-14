@@ -11,5 +11,8 @@ public interface IClienteDao extends JpaRepository<Cliente, Long>{
 
 	@Query("SELECT c FROM Cliente c WHERE c.clienteId = ?1")
 	Optional<Cliente> findClienteByclienteId(String clienteId);
+	
+    @Query("SELECT c FROM Cliente c WHERE c.email = ?1")
+    Optional<Cliente> findByEmail(String email);
 
 }

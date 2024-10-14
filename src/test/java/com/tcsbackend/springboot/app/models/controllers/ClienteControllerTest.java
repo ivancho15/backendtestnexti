@@ -29,12 +29,12 @@ public class ClienteControllerTest {
 		 Cliente cliente = new Cliente();
 	     cliente.setNombre("Iván");
 	     cliente.setApellido("Marcano");
-	     cliente.setEmail("ijmm54@gmail.com");
+	     cliente.setEmail("ijmm85@gmail.com");
 	     cliente.setDireccion("mi casa por la ciudad");
 	     cliente.setEdad(40);
 	     cliente.setEstado(true);
 	     cliente.setTelefono("0987456612");
-	     cliente.setClienteId("178547859");
+	     cliente.setClienteId("178547559");
 	     cliente.setPassword("12345");
 
 	     mockMvc.perform(post("/api/clientes")

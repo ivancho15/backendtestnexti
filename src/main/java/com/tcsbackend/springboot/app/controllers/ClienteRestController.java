@@ -64,6 +64,9 @@ public class ClienteRestController {
 	            response.put("mensaje", "El cliente ha sido creado con éxito!");
 	            response.put("cliente", clienteNew);
 	            return new ResponseEntity<>(response, HttpStatus.CREATED);
+	        } catch (IllegalArgumentException e) {
+	            response.put("mensaje", e.getMessage());
+	            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
 	        } catch (DataAccessException e) {
 	            return handleDatabaseError(response, e, "Error al realizar el insert en la base de datos");
 	        }

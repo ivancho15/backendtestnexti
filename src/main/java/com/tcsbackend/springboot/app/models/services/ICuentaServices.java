@@ -10,5 +10,6 @@ public interface ICuentaServices {
 	public Cuenta findById(Long id);
 	public void delete(Long id);
 	public List<Cuenta> cuentaByClienet(Long clienteId);
+	public boolean existsByNroCuenta(Long nroCuenta);
 
 }

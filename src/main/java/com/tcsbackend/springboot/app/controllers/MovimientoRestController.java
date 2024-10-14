@@ -26,7 +26,7 @@ public class MovimientoRestController {
     @Autowired
     private ICuentaServices cuentaService;
 
-    // Helper method to handle validation errors
+    // Manejo de errores de validación
     private ResponseEntity<Map<String, Object>> handleValidationErrors(BindingResult result) {
         List<String> errors = result.getFieldErrors().stream()
             .map(err -> "El campo " + err.getField() + " " + err.getDefaultMessage())
@@ -34,7 +34,7 @@ public class MovimientoRestController {
         return new ResponseEntity<>(Map.of("errors", errors), HttpStatus.BAD_REQUEST);
     }
 
-    // Helper method to handle database errors
+    //  Manejo de errores en la base de datos
     private ResponseEntity<Map<String, Object>> handleDatabaseError(DataAccessException e) {
         return new ResponseEntity<>(Map.of(
             "mensaje", "Error en la base de datos",
@@ -93,6 +93,8 @@ public class MovimientoRestController {
                 "mensaje", "Movimiento registrado con éxito",
                 "movimiento", movimiento), HttpStatus.CREATED);
         } catch (SaldoInsuficienteException e) {
+            return new ResponseEntity<>(Map.of("mensaje", e.getMessage()), HttpStatus.BAD_REQUEST);
+        } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(Map.of("mensaje", e.getMessage()), HttpStatus.BAD_REQUEST);
         } catch (DataAccessException e) {
             return handleDatabaseError(e);

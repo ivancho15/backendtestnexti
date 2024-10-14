@@ -46,12 +46,20 @@ public class CuentaRestController {
         }
         return handleServiceCall(() -> cuentaService.cuentaByClienet(clienteId), "Error al consultar cuentas del cliente.");
     }
-
+    
+    @PostMapping("/cuentas")
+    public ResponseEntity<?> createCuenta(@Valid @RequestBody Cuenta cuenta, BindingResult result) {
+    	return handleServiceCall(() -> cuentaService.save(cuenta), "Error al crear la cuenta." );
+    }
+    
     @PostMapping("/clientes/{clienteId}/cuentas")
     public ResponseEntity<?> createCuenta(@Valid @RequestBody Cuenta cuenta, BindingResult result, @PathVariable Long clienteId) {
         Cliente cliente = clienteService.findById(clienteId);
         if (cliente == null) {
             return generateErrorResponse("El cliente ID: " + clienteId + " no existe en la base de datos", HttpStatus.NOT_FOUND);
+        }
+        if (cuentaService.existsByNroCuenta(cuenta.getNro_cuenta())) {
+            return generateErrorResponse("El número de cuenta ya existe: " + cuenta.getNro_cuenta(), HttpStatus.CONFLICT);
         }
         if (result.hasErrors()) {
             return generateValidationErrorResponse(result);

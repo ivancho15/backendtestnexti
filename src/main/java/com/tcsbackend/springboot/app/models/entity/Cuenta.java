@@ -25,7 +25,7 @@ import jakarta.validation.constraints.NotNull;
 public class Cuenta {
 	
 	@Id
-	@Digits(integer=6, fraction=0)
+	@Digits(integer=10, fraction=0)
 	private Long nro_cuenta;
 	
 	@NotEmpty(message = "no puede ser vacio")

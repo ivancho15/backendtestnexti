@@ -1,5 +1,6 @@
 package com.tcsbackend.springboot.app.models.services;
 
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +13,14 @@ import com.tcsbackend.springboot.app.models.entity.Movimiento;
 @Service
 public class MovimientoServicesImpl implements IMovimientoService {
 
-    @Autowired
-    private IMovimientoDao movimientoDao;
-
-    @Autowired
-    private ICuentaServices cuentaService;
+	@Autowired
+	private  IMovimientoDao movimientoDao;
+	@Autowired
+	private  ICuentaServices cuentaService;
+    
+    private static final List<String> MOVIMIENTOS_CREDITOS = Arrays.asList("Deposito", "Nota de Credito", "Transferencia Acreditada");
+    private static final List<String> MOVIMIENTOS_DEBITOS = Arrays.asList("Retiro", "Debito", "Transferencia Debitada", "Pago");
+    
 
     @Override
     @Transactional(readOnly = true)
@@ -50,21 +54,29 @@ public class MovimientoServicesImpl implements IMovimientoService {
     @Override
     @Transactional
     public void processMovimiento(Cuenta cuenta, Movimiento movimiento) {
-        // Validate movement type and value
-        if (((movimiento.getTipo().equals("Retiro") && movimiento.getValor() > 0)
-                || (movimiento.getTipo().equals("Deposito") && movimiento.getValor() < 0))) {
-            throw new IllegalArgumentException("Inconsistencia en la operación");
+        // Validar tipo de movimiento
+        if (!MOVIMIENTOS_CREDITOS.contains(movimiento.getTipo()) && !MOVIMIENTOS_DEBITOS.contains(movimiento.getTipo())) {
+            throw new IllegalArgumentException("Tipo de movimiento no permitido");
         }
 
-        // Check for sufficient funds
-        if (movimiento.getValor() + cuenta.getSaldo() < 0) {
-            throw new SaldoInsuficienteException("Saldo insuficiente");
+        // Determinar si el movimiento acredita o debita
+        double nuevoSaldo;
+        if (MOVIMIENTOS_CREDITOS.contains(movimiento.getTipo())) {
+            nuevoSaldo = cuenta.getSaldo() + movimiento.getValor();  // Acredita a la cuenta
+        } else if (MOVIMIENTOS_DEBITOS.contains(movimiento.getTipo())) {
+            // Validar que haya suficiente saldo antes de debitar
+            if (movimiento.getValor() > cuenta.getSaldo()) {
+                throw new SaldoInsuficienteException("Saldo insuficiente");
+            }
+            nuevoSaldo = cuenta.getSaldo() - movimiento.getValor();  // Debita de la cuenta
+        } else {
+            throw new IllegalArgumentException("Tipo de movimiento inválido");
         }
 
-        // Update balance and save movement
-        movimiento.setSaldo(cuenta.getSaldo() + movimiento.getValor());
+        // Actualizar saldo y guardar movimiento
+        movimiento.setSaldo(nuevoSaldo);
         movimiento.setCuenta(cuenta);
-        cuenta.setSaldo(movimiento.getSaldo());
+        cuenta.setSaldo(nuevoSaldo);
         save(movimiento);
         cuentaService.save(cuenta);
     }

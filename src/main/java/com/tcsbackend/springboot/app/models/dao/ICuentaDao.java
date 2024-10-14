@@ -11,4 +11,6 @@ public interface ICuentaDao extends CrudRepository<Cuenta, Long>{
 	
 	@Query(value="SELECT c from Cuenta c where c.cliente.id =?1")
 	List<Cuenta> findByClienteId(Long clienteId);
+	
+	public boolean existsById(Long nroCuenta);
 }

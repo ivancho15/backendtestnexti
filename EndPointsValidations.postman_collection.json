@@ -21,7 +21,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:8080/api/clientes/17"
+				"url": "http://localhost:8080/api/clientes/66"
 			},
 			"response": []
 		},
@@ -32,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "\n{\"nombre\":\"Iván\",\"apellido\":\"Marcano\",\"email\":\"ijmm15@gmail.com\",\"direccion\":\"mi casa por la ciudad\",\"edad\":41,\"telefono\":\"0987456612\",\"clienteId\":\"178547857\",\"password\":\"12345\",\"estado\":true}\n",
+					"raw": "\n{\"nombre\":\"Giselle\",\"apellido\":\"Delfante\",\"email\":\"gdelfante@gmail.com\",\"direccion\":\"mi casa la del al lado\",\"edad\":25,\"telefono\":\"0969874125\",\"clienteId\":\"179254786\",\"password\":\"12345\",\"estado\":true}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -50,14 +50,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nombre\": \"Marianela\",\n    \"apellido\": \"Montalvo\",\n    \"email\": \"nela_montalvo@gmail.com\",\n    \"direccion\": \"La Pradera\",\n    \"edad\": 25, \n    \"telefono\": \"0998884477\",\n    \"clienteId\": \"176784123\",\n    \"password\": \"54321\",\n    \"estado\": true\n}",
+					"raw": "{\n    \"nombre\": \"Marianela\",\n    \"apellido\": \"Montalvo\",\n    \"email\": \"j_avila@gmail.com\",\n    \"direccion\": \"La Pradera\",\n    \"edad\": 25, \n    \"telefono\": \"0998884477\",\n    \"clienteId\": \"176784123\",\n    \"password\": \"8888\",\n    \"estado\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/api/clientes/38"
+				"url": "http://localhost:8080/api/clientes/62"
 			},
 			"response": []
 		},
@@ -66,7 +66,7 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": "http://localhost:8080/api/clientes/47"
+				"url": "http://localhost:8080/api/clientes/70"
 			},
 			"response": []
 		},
@@ -93,7 +93,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:8080/api/clientes/17/cuentas"
+				"url": "http://localhost:8080/api/clientes/72/cuentas"
 			},
 			"response": []
 		},
@@ -104,14 +104,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nro_cuenta\": 585521,    \n    \"tipo\": \"Ahorros\",\n    \"saldo\": 2500,\n    \"estado\": true\n}",
+					"raw": "{\n    \"nro_cuenta\": 544499,    \n    \"tipo\": \"Ahorros\",\n    \"saldo\": 2300,\n    \"estado\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/api/clientes/57/cuentas"
+				"url": "http://localhost:8080/api/clientes/72/cuentas"
 			},
 			"response": []
 		},
@@ -138,7 +138,7 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": "http://localhost:8080/api/cuentas/585599"
+				"url": "http://localhost:8080/api/cuentas/555599"
 			},
 			"response": []
 		},
@@ -183,7 +183,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:8080/api/cuentas/478758/movimientos"
+				"url": "http://localhost:8080/api/cuentas/555599/movimientos"
 			},
 			"response": []
 		},
@@ -194,14 +194,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"tipo\": \"Retiro\",    \n    \"valor\": -540\n}",
+					"raw": "{\n    \"tipo\": \"Pago\",    \n    \"valor\": 7000\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/api/cuentas/585526/movimientos"
+				"url": "http://localhost:8080/api/cuentas/555599/movimientos"
 			},
 			"response": []
 		},
@@ -212,7 +212,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"tipo\": \"Retiro\",    \n    \"valor\": -540\n}",
+					"raw": "{\n    \"tipo\": \"Retiro\",    \n    \"valor\": 540\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -230,43 +230,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"tipo\": \"Deposito\",    \n    \"valor\": 750\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://localhost:8080/api/cuentas/585525/movimientos"
-			},
-			"response": []
-		},
-		{
-			"name": "movimientos - crear movimiento validacion Deposito negativo",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"tipo\": \"Deposito\",    \n    \"valor\": -300\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://localhost:8080/api/cuentas/585525/movimientos"
-			},
-			"response": []
-		},
-		{
-			"name": "movimientos - crear movimiento validacion Retiro positivo",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"tipo\": \"Retiro\",    \n    \"valor\": 500\n}",
+					"raw": "{\n    \"tipo\": \"Transferencia Acreditada\",    \n    \"valor\": 150\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -301,7 +265,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/reporte/estadoDeCuentaFechaCliente?dateBefore=2024-05-1&dateAfter=2024-07-8&idCliente=20",
+					"raw": "http://localhost:8080/api/reporte/estadoDeCuentaFechaCliente?dateBefore=2024-01-01&dateAfter=2024-10-20&idCliente=72",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -315,15 +279,15 @@
 					"query": [
 						{
 							"key": "dateBefore",
-							"value": "2024-05-1"
+							"value": "2024-01-01"
 						},
 						{
 							"key": "dateAfter",
-							"value": "2024-07-8"
+							"value": "2024-10-20"
 						},
 						{
 							"key": "idCliente",
-							"value": "20"
+							"value": "72"
 						}
 					]
 				}
